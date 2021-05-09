@@ -1,0 +1,10 @@
+{
+    "title": "المستخدمين",
+    "form_title": "المستخدم",
+    "name": "اسم",
+    "email": "بريد إلكتروني",
+    "password": "كلمه السر",
+    "update_password": "تطوير كلمة السر",
+    "password_confirmation": "تأكيد كلمة المرور",
+    "role": "دور"
+}

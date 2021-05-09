@@ -1,0 +1,19 @@
+{
+    "dashboard": "لوحة القيادة",
+    "permissions": "أذونات",
+    "roles": "أدوار",
+    "users": "المستخدمين",
+    "plans": "خطط",
+    "location": "موقع",
+    "countries": "الدول",
+    "states": "تنص على",
+    "cities": "مدن",
+    "myaccount": "حسابي",
+    "commissions": "اللجان",
+    "settings": "إعدادات",
+    "distributors": "الموزعين",
+    "franchises": "الامتيازات",
+    "promotors": "المروجين",
+    "franchise_amounts": "كميات الامتياز",
+    "news": "أخبار"
+}

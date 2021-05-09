@@ -1,0 +1,15 @@
+{
+    "title": "إعدادات",
+    "form_title": "جلسة",
+    "name": "اسم",
+    "email": "بريد إلكتروني",
+    "contact": "اتصال",
+    "distributor_role": "دور موزع",
+    "promotor_role": "دور المروج",
+    "franchise_role": "امتياز دور",
+    "distributor_commission": "عمولة الموزع",
+    "level_1_commission": "1 رف المفوض",
+    "level_2_commission": "عمولة المستوى 2",
+    "level_3_commission": "عمولة المستوى 3",
+    "level_4_commission": "4 رف المفوض"
+}

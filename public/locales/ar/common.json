@@ -1,0 +1,21 @@
+{
+    "appTitle": "مشرف",
+    "welcome": "مرحبا {{username}}",
+    "dashboard": "لوحة القيادة",
+    "permissions": "أذونات",
+    "roles": "أدوار",
+    "users": "المستخدمين",
+    "loading": "جار التحميل...",
+    "readMore": "اقرأ أكثر...",
+    "name": "اسم",
+    "email": "بريد إلكتروني",
+    "password": "كلمه السر",
+    "password_confirmation": "تأكيد كلمة المرور",
+    "code": "شفرة",
+    "updated": "محدث",
+    "image": "صورة",
+    "subject": "موضوع",
+    "login_form": "نموذج تسجيل الدخول",
+    "login": "تسجيل الدخول",
+    "forgot_password": "هل نسيت كلمة السر ؟"
+}
