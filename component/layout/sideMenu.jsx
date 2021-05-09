@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 const Index = () => {
     const router = useRouter()
-    const { t } = useTranslation(["common", "menu"])
+    const { t } = useTranslation(["translation", "menu"])
     const [langMenu, openLangMenu] = React.useState(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [locales, setLocales] = React.useState([]);

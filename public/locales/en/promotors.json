@@ -1,9 +1,0 @@
-{
-    "title": "Promotors",
-    "form_title": "Promotor Form",    
-    "name": "Name",
-    "email": "Email",
-    "password": "Password",
-    "update_password": "Update Password",
-    "password_confirmation": "Password Confirmation"    
-}

@@ -17,49 +17,6 @@ menuData.push({
 })
 
 
-// start location module
-subitems = []
-
-if (checkPermission('countries.index')) {
-    subitems.push({
-        "id": "countries",
-        "icon": "",
-        "name": "countries",
-        "link": "/countries"
-    })
-}
-if (checkPermission('states.index')) {
-    subitems.push({
-        "id": "states",
-        "icon": "",
-        "name": "states",
-        "link": "/states"
-    })
-}
-if (checkPermission('cities.index')) {
-    subitems.push({
-        "id": "cities",
-        "icon": "",
-        "name": "cities",
-        "link": "/cities"
-    })
-}
-if (subitems.length) {
-    menuData.push({
-        "id": "locationModule",
-        "title": "",
-        "items": [
-            {
-                "id": "countries",
-                "name": "location",
-                "icon": "place",
-                "subitems": subitems
-            }
-        ]
-    })
-}
-
-// end location module
 
 // start user module
 subitems = []
@@ -88,34 +45,6 @@ if (checkPermission('users.index')) {
     })
 }
 
-if (checkPermission('distributors.index')) {
-    subitems.push({
-        "id": "distributors",
-        "icon": "persons",
-        "name": "distributors",
-        "link": "/distributors"
-    })
-}
-if (checkPermission('promotors.index')) {
-    subitems.push({
-
-        "id": "promotors",
-        "icon": "persons",
-        "name": "promotors",
-        "link": "/promotors"
-    }
-
-    )
-}
-if (checkPermission('franchises.index')) {
-    subitems.push({
-        "id": "franchises",
-        "icon": "persons",
-        "name": "franchises",
-        "link": "/franchises"
-    })
-}
-
 if (subitems.length) {
     menuData.push({
         "id": "userModule",
@@ -134,81 +63,57 @@ if (subitems.length) {
 // end user module
 
 
-if (checkPermission('plans.index')) {
-    menuData.push({
-        "id": 6,
-        "title": "",
-        "items": [
-            {
-                "id": "plans",
-                "icon": "next_plan",
-                "name": "plans",
-                "link": "/plans"
-            }
-        ]
+
+// start item module
+subitems = []
+
+if (checkPermission('categories.index')) {
+    subitems.push({
+        "id": "categories",
+        "icon": "settings",
+        "name": "categories",
+        "link": "/categories"
     })
 }
-if (checkPermission('news.index')) {
-    menuData.push({
-        "id": "newsModule",
-        "title": "",
-        "items": [
-            {
-                "id": "news",
-                "icon": "next_plan",
-                "name": "news",
-                "link": "/news"
-            }
-        ]
+if (checkPermission('items.index')) {
+    subitems.push({
+        "id": "items",
+        "icon": "settings",
+        "name": "items",
+        "link": "/items"
     })
 }
-if (checkPermission('franchise_amounts.index')) {
+if (subitems.length) {
     menuData.push({
-        "id": "franchiseAmountsModule",
+        "id": "itemModule",
         "title": "",
         "items": [
             {
-                "id": "franchise_amounts",
-                "icon": "next_plan",
-                "name": "franchise_amounts",
-                "link": "/franchise_amounts"
+                "id": "items",
+                "icon": "",
+                "name": "items",
+                "subitems": subitems
             }
         ]
     })
 }
 
-// if (checkPermission('settings')) {
-//     menuData.push({
-//         "id": 'settingModule',
-//         "title": "",
-//         "items": [
-//             {
-//                 "id": "settings",
-//                 "icon": "settings",
-//                 "name": "settings",
-//                 "link": "/settings"
-//             }
-//         ]
-//     })
-// }
+// end item module
 
-
-if (checkPermission('commissions.index')) {
+if (checkPermission('settings')) {
     menuData.push({
-        "id": 'commissionsModule',
+        "id": 'settingModule',
         "title": "",
         "items": [
             {
-                "id": "commissions",
-                "icon": "money",
-                "name": "commissions",
-                "link": "/commissions"
+                "id": "settings",
+                "icon": "settings",
+                "name": "settings",
+                "link": "/settings"
             }
         ]
     })
 }
-
-
 
 
 export const menuConstants = {

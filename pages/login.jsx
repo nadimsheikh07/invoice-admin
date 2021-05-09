@@ -7,7 +7,7 @@ import Link from '../component/Link';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
-    const { t } = useTranslation(["common", "users"])
+    const { t } = useTranslation(["translation", "users"])
     const formTitle = t('login_form')
     const submitTitle = t('login')
     const [token] = useState(getToken())

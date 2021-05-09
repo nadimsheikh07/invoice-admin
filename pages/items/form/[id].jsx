@@ -7,20 +7,20 @@ import { useTranslation } from 'react-i18next';
 
 
 const Index = () => {
-    const { t } = useTranslation(["common", "cities"])
-    const formTitle = t('cities:form_title')
+    const { t } = useTranslation(["translation", "items"])
+    const formTitle = t('items:form_title')
     const submitTitle = t('save')
     const router = useRouter()
     const { id } = router.query
-    const acitionUrl = 'cities'
-    const redirectUrl = '/cities'
+    const acitionUrl = 'items'
+    const redirectUrl = '/items'
     
     const form = [
         {
-            label: t('cities:state'),
-            name: "state_id",
+            label: t('items:category'),
+            name: "category_id",
             type: "autocomplete",
-            url: "/states",
+            url: "/categories",
             getOptionLabel: 'name',
             getOptionValue: 'id',
             fullWidth: true,
@@ -28,9 +28,27 @@ const Index = () => {
             validation: "required"
         },
         {
-            label: t('cities:name'),
+            label: t('items:name'),
             name: "name",
             type: "text",
+            required: true,
+            fullWidth: true,
+            icon: "",
+            validation: "required"
+        },            
+        {
+            label: t('items:price'),
+            name: "price",
+            type: "text",
+            required: true,
+            fullWidth: true,
+            icon: "",
+            validation: "required"
+        },            
+        {
+            label: t('items:track_inventory'),
+            name: "track_inventory",
+            type: "checkbox",
             required: true,
             fullWidth: true,
             icon: "",

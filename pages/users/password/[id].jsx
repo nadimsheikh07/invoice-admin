@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const Index = () => {
-    const { t } = useTranslation(["common", "users"])
+    const { t } = useTranslation(["translation", "users"])
     const formTitle = t('users:update_password')
     const submitTitle = t('users:update_password')    
     const router = useRouter()

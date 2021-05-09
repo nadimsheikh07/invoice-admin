@@ -3,17 +3,6 @@
     "permissions": "Permissions",
     "roles": "Roles",
     "users": "Users",
-    "plans": "Plans",
-    "location": "Location",
-    "countries": "Countries",
-    "states": "States",
-    "cities": "Cities",
-    "myaccount": "My Acount",
-    "commissions": "Commissions",
-    "settings": "Settings",
-    "distributors": "Distributors",
-    "franchises": "Franchises",
-    "promotors": "Promotors",
-    "franchise_amounts": "Franchise Amounts",
-    "news": "News"
+    "myaccount": "My Acount",    
+    "settings": "Settings"    
 }

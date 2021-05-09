@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const Index = () => {
-    const { t } = useTranslation(["common", "settings"])
+    const { t } = useTranslation(["translation", "settings"])
     const formTitle = t('settings:form_title')
     const submitTitle = t('common:save')    
     const acitionUrl = 'settings'

@@ -7,42 +7,24 @@ import { useTranslation } from 'react-i18next';
 
 
 const Index = () => {
-    const { t } = useTranslation(["common", "countries"])
-    const formTitle = t('countries:form_title')
+    const { t } = useTranslation(["translation", "categories"])
+    const formTitle = t('categories:form_title')
     const submitTitle = t('save')
     const router = useRouter()
     const { id } = router.query
-    const acitionUrl = 'countries'
-    const redirectUrl = '/countries'
+    const acitionUrl = 'categories'
+    const redirectUrl = '/categories'
     
-    const form = [
+    const form = [        
         {
-            label: t('countries:name'),
+            label: t('categories:name'),
             name: "name",
             type: "text",
             required: true,
             fullWidth: true,
             icon: "",
             validation: "required"
-        },
-        {
-            label: t('countries:code'),
-            name: "code",
-            type: "text",
-            required: true,
-            fullWidth: true,
-            icon: "",
-            validation: "required"
-        },        
-        {
-            label: t('countries:phonecode'),
-            name: "phonecode",
-            type: "text",
-            required: true,
-            fullWidth: true,
-            icon: "",
-            validation: "required"
-        },        
+        },                              
     ]
 
     return (
@@ -53,6 +35,5 @@ const Index = () => {
         </AdminLayout>
     )
 }
-
 
 export default Index

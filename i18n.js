@@ -22,7 +22,7 @@ i18n
     fallbackLng: 'en',
     preload: ['en', 'ar'],
     debug: false,    
-    defaultNS: 'common',
+    defaultNS: 'translation',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

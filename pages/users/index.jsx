@@ -5,7 +5,7 @@ import { checkPermission } from "../../config/_helpers";
 import { useTranslation } from "react-i18next";
 
 const Index = () => {
-  const { t } = useTranslation(["common", "users"]);
+  const { t } = useTranslation(["translation", "users"]);
   const title = t("users:title");
 
   let columns = [];
