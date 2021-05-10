@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 
 const Index = () => {
-    const { t } = useTranslation(["translation", "permissions"])
+    const { t } = useTranslation([ "permissions"])
     const title = t('permissions:title')
     let columns = []
 

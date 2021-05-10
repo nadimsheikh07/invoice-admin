@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 
 const Index = () => {
-    const { t } = useTranslation(["translation", "categories"])
+    const { t } = useTranslation([ "categories"])
     const title = t('categories:title')
     let columns = []
 

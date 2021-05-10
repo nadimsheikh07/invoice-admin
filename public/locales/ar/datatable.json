@@ -1,0 +1,57 @@
+{
+    "body": {
+        "emptyDataSourceMessage": "No records to display",
+        "addTooltip": "Add",
+        "deleteTooltip": "Delete",
+        "editTooltip": "Edit",
+        "filterRow": {
+            "filterPlaceHolder": "",
+            "filterTooltip": "Filter"
+        },
+        "editRow": {
+            "deleteText": "Are you sure delete this row?",
+            "cancelTooltip": "Cancel",
+            "saveTooltip": "Save"
+        }
+    },
+    "grouping": {
+        "placeholder": "Drag headers ...",
+        "groupedBy": "Grouped By:"
+    },
+    "header": {
+        "actions": "Actions"
+    },
+    "pagination": {
+        "labelDisplayedRows": "{from}-{to} of {count}",
+        "labelRowsSelect": "rows",
+        "labelRowsPerPage": "Rows per page:",
+        "firstAriaLabel": "First Page",
+        "firstTooltip": "First Page",
+        "previousAriaLabel": "Previous Page",
+        "previousTooltip": "Previous Page",
+        "nextAriaLabel": "Next Page",
+        "nextTooltip": "Next Page",
+        "lastAriaLabel": "Last Page",
+        "lastTooltip": "Last Page"
+    },
+    "toolbar": {
+        "addRemoveColumns": "Add or remove columns",
+        "nRowsSelected": "{0} row(s) selected",
+        "showColumnsTitle": "Show Columns",
+        "showColumnsAriaLabel": "Show Columns",
+        "exportTitle": "Export",
+        "exportAriaLabel": "Export",
+        "exportName": "Export as CSV",
+        "searchTooltip": "Search",
+        "searchPlaceholder": "Search"
+    },
+    "selectDateRange": "Select date range",
+    "confirmation": "Confirmation",    
+    "deleteAll": "Delete All",    
+    "view": "View",
+    "editPassword": "Edit Password",
+    "refresh": "Refresh",
+    "dateRange": "Date Range",
+    "exportData": "Export Data",
+    "importData": "Import Data"    
+}

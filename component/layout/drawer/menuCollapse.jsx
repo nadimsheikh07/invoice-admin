@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const Index = ({ handleClick, menu, item, nested }) => {
     const classes = useStyles();
     const router = useRouter()
-    const { t } = useTranslation(["translation", "menu"])
+    const { t } = useTranslation([ "menu"])
     // open menu if location is same
     if (router) {
         if (item) {

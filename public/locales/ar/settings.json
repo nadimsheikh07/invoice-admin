@@ -1,0 +1,15 @@
+{
+    "title": "Settings",
+    "form_title": "Setting",
+    "name": "Name",
+    "email": "Email",
+    "contact": "Contact",
+    "distributor_role": "Distributor Role",
+    "promotor_role": "Promotor Role",
+    "franchise_role": "Franchise Role",
+    "distributor_commission": "Distributor Commission",
+    "level_1_commission": "1 Level Commission",
+    "level_2_commission": "2 Level Commission",
+    "level_3_commission": "3 Level Commission",
+    "level_4_commission": "4 Level Commission"
+}

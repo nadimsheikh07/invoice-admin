@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 const Index = () => {
     const [token] = useState(getToken())
     const router = useRouter()
-    const { t } = useTranslation(["translation", "users"])
+    const { t } = useTranslation([ "users"])
     const formTitle = t('forgot_password_form')
     const submitTitle = t('send')
 

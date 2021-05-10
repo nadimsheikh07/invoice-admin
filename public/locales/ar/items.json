@@ -1,0 +1,8 @@
+{
+    "title": "Items",
+    "form_title": "Item Form",
+    "name": "Name",
+    "category": "Category",
+    "price": "Price",
+    "track_inventory": "Track Inventory"
+}

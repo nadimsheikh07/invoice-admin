@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Index = ({ nested, subNested, data }) => {
     const router = useRouter()
-    const { t } = useTranslation(["translation", "menu"])
+    const { t } = useTranslation([ "menu"])
     const { name, icon, link } = data
 
     const classes = useStyles();
