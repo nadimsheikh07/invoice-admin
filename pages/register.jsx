@@ -14,7 +14,7 @@ const Index = () => {
 
     useEffect(() => {
         if (getToken) {
-            router.push('/admin')
+            router.push('/dashboard')
         }
     }, [])
 

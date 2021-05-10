@@ -1,12 +1,9 @@
 import AdminLayout from '../component/layout'
 import DashboardList from '../component/dashboard';
-// import NewsSlider from '../component/news/slider';
-
-const Index = () => {
+const Index = () => {    
     return (
         <AdminLayout>
-            <DashboardList />
-            {/* <NewsSlider/> */}
+            <DashboardList />            
         </AdminLayout>
     )
 }

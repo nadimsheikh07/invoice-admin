@@ -15,7 +15,7 @@ const Index = () => {
 
     useEffect(() => {
         if (token) {
-            router.push('/admin')
+            router.push('/dashboard')
         }
     }, [token])
 
@@ -23,7 +23,7 @@ const Index = () => {
         if (data.accessToken) {
             setToken(data.accessToken)
             setPermission(data.permissions)
-            location.replace('/admin')
+            location.replace('/dashboard')
         }
     }
 

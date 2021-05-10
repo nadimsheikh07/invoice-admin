@@ -11,7 +11,7 @@ menuData.push({
             "id": "dashboard",
             "icon": "dashboard",
             "name": "dashboard",
-            "link": "/admin"
+            "link": "/dashboard"
         }
     ]
 })
