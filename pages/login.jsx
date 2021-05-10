@@ -7,9 +7,9 @@ import Link from '../component/Link';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
-    const { t } = useTranslation([ "users"])
-    const formTitle = t('login_form')
-    const submitTitle = t('login')
+    const { t } = useTranslation("login")
+    const formTitle = t('login:form_title')
+    const submitTitle = t('login:submit_text')
     const [token] = useState(getToken())
     const router = useRouter()
 
@@ -29,7 +29,7 @@ const Index = () => {
 
     const form = [
         {
-            label: t('email'),
+            label: t('login:email'),
             name: "email",
             type: "email",
             required: true,
@@ -38,7 +38,7 @@ const Index = () => {
             validation: "required|email"
         },
         {
-            label: t('password'),
+            label: t('login:password'),
             name: "password",
             type: "password",
             required: true,
@@ -53,7 +53,7 @@ const Index = () => {
             <Form form={form} actionUrl="auth/signin" id="new" submitTitle={submitTitle} callBack={setTokenData} />
             
             <Link href="/forgot_password" variant="body2">
-                {t('forgot_password')}
+                {t('login:forgot_password')}
             </Link>
 
         </FormLayout>

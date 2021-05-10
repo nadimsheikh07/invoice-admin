@@ -1,0 +1,8 @@
+{
+    "title": "Login",
+    "form_title": "Login Form",    
+    "email": "Email",
+    "password": "Password",    
+    "submit_text": "Login",
+    "forgot_password": "Forgot Password ?"
+}

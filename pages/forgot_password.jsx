@@ -9,9 +9,9 @@ import { useTranslation } from 'react-i18next';
 const Index = () => {
     const [token] = useState(getToken())
     const router = useRouter()
-    const { t } = useTranslation([ "users"])
-    const formTitle = t('forgot_password_form')
-    const submitTitle = t('send')
+    const { t } = useTranslation("forgot_password")
+    const formTitle = t('forgot_password:form_title')
+    const submitTitle = t('forgot_password:submit_text')
 
     useEffect(() => {
         if (token) {
@@ -29,7 +29,7 @@ const Index = () => {
 
     const form = [
         {
-            label: t('email'),
+            label: t('forgot_password:email'),
             name: "email",
             type: "email",
             required: true,
@@ -43,7 +43,7 @@ const Index = () => {
         <FormLayout title={formTitle} marginTop={200} margin={10}>
             <Form form={form} actionUrl="auth/forgot_password" id="new" submitTitle={submitTitle} callBack={setTokenData} />            
             <Link href="/login" variant="body2">
-                {t('back_to_login')}
+                {t('forgot_password:back_to_login')}
             </Link>
         </FormLayout>
     )

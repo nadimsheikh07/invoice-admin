@@ -8,9 +8,9 @@ import { useTranslation } from 'react-i18next';
 
 const Index = () => {
     const router = useRouter()
-    const { t } = useTranslation([ "users"])
-    const formTitle = t('register_form')
-    const submitTitle = t('register')
+    const { t } = useTranslation("register")
+    const formTitle = t('register:form_title')
+    const submitTitle = t('register:submit_text')
 
     useEffect(() => {
         if (getToken) {
@@ -26,7 +26,7 @@ const Index = () => {
     }
     const form = [
         {
-            label: t('name'),
+            label: t('register:name'),
             name: "name",
             type: "text",
             required: true,
@@ -35,7 +35,7 @@ const Index = () => {
             validation: "required"
         },
         {
-            label: t('email'),
+            label: t('register:email'),
             name: "email",
             type: "email",
             required: true,
@@ -44,7 +44,7 @@ const Index = () => {
             validation: "required|email"
         },
         {
-            label: t('password'),
+            label: t('register:password'),
             name: "password",
             type: "password",
             required: true,
@@ -53,7 +53,7 @@ const Index = () => {
             validation: "required"
         },
         {
-            label: t('password_confirmation'),
+            label: t('register:password_confirmation'),
             name: "password_confirmation",
             type: "password",
             required: true,

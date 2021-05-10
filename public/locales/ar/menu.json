@@ -4,5 +4,7 @@
     "roles": "Roles",
     "users": "Users",
     "myaccount": "My Acount",    
-    "settings": "Settings"    
+    "settings": "Settings",
+    "categories": "Categories",
+    "items": "Items"
 }

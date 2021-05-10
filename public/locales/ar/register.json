@@ -1,0 +1,9 @@
+{
+    "title": "Register",
+    "form_title": "Register Form",    
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",    
+    "password_confirmation": "Password Confirmation",    
+    "submit_text": "Register"    
+}
