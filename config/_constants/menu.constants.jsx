@@ -98,7 +98,65 @@ if (subitems.length) {
     })
 }
 
-// end item module
+// start crm module
+subitems = []
+
+if (checkPermission('companies.index')) {
+    subitems.push({
+        "id": "companies",
+        "icon": "settings",
+        "name": "companies",
+        "link": "/companies"
+    })
+}
+if (checkPermission('customers.index')) {
+    subitems.push({
+        "id": "customers",
+        "icon": "settings",
+        "name": "customers",
+        "link": "/customers"
+    })
+}
+
+if (checkPermission('purchases.index')) {
+    subitems.push({
+        "id": "purchases",
+        "icon": "settings",
+        "name": "purchases",
+        "link": "/purchases"
+    })
+}
+if (checkPermission('sales.index')) {
+    subitems.push({
+        "id": "sales",
+        "icon": "settings",
+        "name": "sales",
+        "link": "/sales"
+    })
+}
+if (checkPermission('inventories.index')) {
+    subitems.push({
+        "id": "inventories",
+        "icon": "settings",
+        "name": "inventories",
+        "link": "/inventories"
+    })
+}
+
+if (subitems.length) {
+    menuData.push({
+        "id": "crmModule",
+        "title": "",
+        "items": [
+            {
+                "id": "crm",
+                "icon": "",
+                "name": "crm",
+                "subitems": subitems
+            }
+        ]
+    })
+}
 
 if (checkPermission('settings')) {
     menuData.push({

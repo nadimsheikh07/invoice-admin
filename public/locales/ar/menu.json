@@ -1,10 +1,10 @@
 {
-    "dashboard": "لوحة القيادة",
-    "permissions": "أذونات",
-    "roles": "أدوار",
-    "users": "المستخدمين",
-    "myaccount": "حسابي",    
-    "settings": "إعدادات",
-    "categories": "فئات",
-    "items": "العناصر"
+    "dashboard": "Dashboard",
+    "permissions": "Permissions",
+    "roles": "Roles",
+    "users": "Users",
+    "myaccount": "My Acount",    
+    "settings": "Settings",
+    "categories": "Categories",
+    "items": "Items"
 }

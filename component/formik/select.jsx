@@ -3,6 +3,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
+import { MenuItem } from '@material-ui/core';
 
 const TextBox = (props) => {
     const { name, label, value, required, options, fullWidth, helperText } = props
@@ -27,7 +28,7 @@ const TextBox = (props) => {
                 }}
             >
                 {options && options.map(option => {
-                    return (<MenuItem key={option.id} value={option.id}>{option.name}</MenuItem>)
+                    return (<MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)
                 })}
             </Select>
 

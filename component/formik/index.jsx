@@ -15,6 +15,7 @@ import MultiCheckbox from './multiCheckbox';
 import MultiGroupCheckbox from './groupCheckBox';
 import DividerSection from './devider';
 import RenderDynamicField from './renderDynamicField';
+import SelectBox from './select';
 
 import { Button } from '@material-ui/core';
 import { useFormik } from 'formik';
@@ -291,6 +292,21 @@ const Index = (props) => {
                                 fullWidth={formData.fullWidth}
                                 name={formData.name}
                                 label={formData.label}
+                                value={formik.values[formData.name]}
+                                onChange={formik.handleChange}
+                                error={formik.touched[formData.name] && Boolean(formik.errors[formData.name])}
+                                helperText={formik.touched[formData.name] && formik.errors[formData.name]}
+                            />
+                        )
+                    case 'selectbox':
+                        return (
+                            <SelectBox
+                                required={formData.required}
+                                disabled={formData.disabled}
+                                fullWidth={formData.fullWidth}
+                                name={formData.name}
+                                label={formData.label}
+                                options={formData.options}
                                 value={formik.values[formData.name]}
                                 onChange={formik.handleChange}
                                 error={formik.touched[formData.name] && Boolean(formik.errors[formData.name])}

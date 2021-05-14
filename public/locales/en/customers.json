@@ -1,0 +1,11 @@
+{
+    "title": "Customers",
+    "form_title": "Customer Form",
+    "name": "Name",
+    "contact": "Contact",
+    "email": "Email",
+    "pancard": "Pancard",
+    "gstin": "GstIn",
+    "address": "Address",        
+    "status": "Status"
+}

@@ -26,7 +26,7 @@ const TextBox = (props) => {
             }
         }
 
-        await apiConfig.post(props.url, formData, config).then((response) => {
+        await apiConfig.post(`/${props.url}`, formData, config).then((response) => {
             const { data } = response            
             if (response.status === 200) {
                 setLoading(false)

@@ -1,0 +1,18 @@
+{
+    "title": "Companies",
+    "form_title": "Company Form",
+    "name": "Name",
+    "contact": "Contact",
+    "email": "Email",
+    "pancard": "Pancard",
+    "gstin": "GstIn",
+    "address": "Address",
+    "bank_name": "Bank Name",
+    "account_number": "Account Number",
+    "account_type": "Account Type",
+    "swift_code": "Swift Code",
+    "ifsc_code": "Ifsc Code",
+    "bank_address": "Bank Address",
+    "sign_image": "Sign Image",
+    "status": "Status"
+}

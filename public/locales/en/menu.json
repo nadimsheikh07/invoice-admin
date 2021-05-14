@@ -3,8 +3,14 @@
     "permissions": "Permissions",
     "roles": "Roles",
     "users": "Users",
-    "myaccount": "My Acount",    
+    "myaccount": "My Acount",
     "settings": "Settings",
     "categories": "Categories",
-    "items": "Items"
+    "items": "Items",
+    "crm": "CRM",
+    "inventories": "Inventories",
+    "sales": "Sales",
+    "purchases": "Purchases",
+    "customers": "Customers",
+    "companies": "Companies"
 }

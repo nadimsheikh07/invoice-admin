@@ -1,0 +1,9 @@
+{
+    "title": "Inventories",
+    "form_title": "Inventory Form",
+    "item": "Item",
+    "type": "Type",
+    "quantity": "Quantity",
+    "price": "Price",
+    "detail": "Detail"
+}
