@@ -2,5 +2,9 @@
     "title": "Sales",
     "form_title": "Sales Form",
     "customer": "Customer",
-    "comments": "Comments"    
+    "company": "Company",
+    "total_tax": "Total Tax",
+    "total_discount": "Total Discount",
+    "total": "Total",
+    "comments": "Comments"
 }

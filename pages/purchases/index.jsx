@@ -16,6 +16,29 @@ const Index = () => {
       return <div>{row.customer.name}</div>;
     },
   });
+  
+  columns.push({
+    title: t("purchases:company"),
+    field: "company.name",
+    render: (row) => {
+      return <div>{row.company.name}</div>;
+    },
+  });
+
+  columns.push({
+    title: t("purchases:total_tax"),
+    field: "total_tax",
+  });
+  
+  columns.push({
+    title: t("purchases:total_discount"),
+    field: "total_discount",
+  });
+
+  columns.push({
+    title: t("purchases:total"),
+    field: "total",
+  });
 
   columns.push({
     title: t("common:updated"),
