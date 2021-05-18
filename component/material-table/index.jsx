@@ -10,9 +10,16 @@ import { useRouter } from "next/router";
 import { useModal } from "../modal";
 import { useSnackbar } from "../snackbar";
 import { useLoader } from "../loader";
-import { Avatar, Icon, makeStyles } from "@material-ui/core";
+import {
+  Avatar,
+  Grid,
+  IconButton,
+  Icon,
+  Tooltip,
+  makeStyles,
+} from "@material-ui/core";
 import { useTranslation } from "react-i18next";
-import { Grid } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(7),
@@ -625,6 +632,21 @@ const MaterialDataTable = (props) => {
                   <MTableToolbar {...propsCopy} />
                 </Grid>
               </Grid>
+            );
+          },
+          Action: (props) => {
+            return (
+              <Tooltip title={props.action.tooltip}>
+                <IconButton
+                  onClick={(event) => props.action.onClick(event, props.data)}
+                  color="default"
+                  variant="contained"
+                  style={{ textTransform: "none" }}
+                  size={props.size}
+                >
+                  <Icon>{props.action.icon}</Icon>
+                </IconButton>
+              </Tooltip>
             );
           },
         }}

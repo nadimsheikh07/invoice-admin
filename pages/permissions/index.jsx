@@ -4,7 +4,6 @@ import AdminLayout from '../../component/layout'
 import { checkPermission } from '../../config/_helpers'
 import { useTranslation } from 'react-i18next'
 
-
 const Index = () => {
     const { t } = useTranslation([ "permissions"])
     const title = t('permissions:title')
@@ -19,7 +18,7 @@ const Index = () => {
         field: "code"
     })
     columns.push({
-        title: t('updated'),
+        title: t('permissions:updated'),
         field: "updated_at"
     })
 
