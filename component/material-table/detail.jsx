@@ -54,10 +54,10 @@ const Index = (props) => {
                 <TableBody>
 
                     {actionButtons && actionButtons.map(actionButton => {
-                        let showBtn = false
+                        let showBtn = true
                         if (actionButton.where) {
-                            if (data[actionButton.where.field] == actionButton.where.value) {
-                                showBtn = true
+                            if (data[actionButton.where.field] != actionButton.where.value) {
+                                showBtn = false
                             }
                         }
                         return (

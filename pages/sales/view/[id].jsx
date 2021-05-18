@@ -60,6 +60,14 @@ const Index = () => {
     },    
   ];
 
+
+  const actionButtons=[{
+    text: "Print Pdf",
+    action:()=>{
+      alert('call pdf')
+    },
+  }]
+
   return (
     <AdminLayout>
       <FormLayout title={formTitle} goBack={redirectUrl} md={8} lg={8} xl={8}>
@@ -67,6 +75,7 @@ const Index = () => {
           url={acitionUrl}
           id={id}
           columns={columns}
+          actionButtons={actionButtons}
         />
       </FormLayout>
     </AdminLayout>
