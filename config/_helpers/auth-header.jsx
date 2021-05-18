@@ -1,21 +1,27 @@
-import { getToken } from './user';
+import { getToken } from "./user";
 export const authHeader = () => {
-    const token = getToken()
+  const token = getToken();
+  let lang = "en";
+  if (process.browser) {
+    lang = localStorage.getItem("i18nextLng");
+  }
 
-    if (token) {
-        return {
-            'Authorization': 'Bearer ' + token,
-            "Accept": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "X-Requested-With",
-            // 'Content-Type': 'multipart/form-data'
-        }
-    } else {
-        return {
-            "Accept": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "X-Requested-With",
-            // 'Content-Type': 'multipart/form-data'
-        }
-    }
-}
+  if (token) {
+    return {
+      Authorization: "Bearer " + token,
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "X-Requested-With",
+      "X-localization": lang,
+      // 'Content-Type': 'multipart/form-data'
+    };
+  } else {
+    return {
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "X-Requested-With",
+      "X-localization": lang,
+      // 'Content-Type': 'multipart/form-data'
+    };
+  }
+};
