@@ -1,5 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
-import MaterialTable from "material-table";
+import MaterialTable, { MTableToolbar } from "material-table";
+
 import { apiConfig } from "../../config/api";
 import moment from "moment";
 import DateBox from "./datefilter";
@@ -11,7 +12,7 @@ import { useSnackbar } from "../snackbar";
 import { useLoader } from "../loader";
 import { Avatar, Icon, makeStyles } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
-
+import { Grid } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(7),
@@ -607,6 +608,24 @@ const MaterialDataTable = (props) => {
             exportName: t("datatable:toolbar:exportName"),
             searchTooltip: t("datatable:toolbar:searchTooltip"),
             searchPlaceholder: t("datatable:toolbar:searchPlaceholder"),
+          },
+        }}
+        components={{
+          Toolbar: (props) => {
+            // This will let you use your own Title while keeping the search
+            const propsCopy = { ...props };
+            // Hide default title
+            propsCopy.showTitle = false;
+            return (
+              <Grid container direction="row">
+                <Grid item xs={4}>
+                  <h3 style={{ marginLeft: 20 }}>{props.title}</h3>
+                </Grid>
+                <Grid item xs={8}>
+                  <MTableToolbar {...propsCopy} />
+                </Grid>
+              </Grid>
+            );
           },
         }}
       />

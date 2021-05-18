@@ -43,7 +43,7 @@ const theme = createMuiTheme({
                 width: "100%"
             }
         }
-    }
+    },    
 });
 
 
