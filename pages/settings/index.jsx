@@ -46,7 +46,7 @@ const Index = () => {
 
     return (
         <AdminLayout>
-            <FormLayout title={formTitle} goBack={redirectUrl}>
+            <FormLayout title={formTitle}>
                 <Form form={form} actionUrl={acitionUrl} id="update" submitTitle={submitTitle} />
             </FormLayout>
         </AdminLayout>
