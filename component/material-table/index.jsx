@@ -420,7 +420,7 @@ const MaterialDataTable = (props) => {
   const customActionCall = async (id, data) => {
     loader({ open: true });
     await apiConfig
-      .put(`/orders/${id}`, data)
+      .put(`/${props.url}/${id}`, data)
       .then((response) => {
         if (response.status == 200) {
           if (response.data.message) {
@@ -494,6 +494,8 @@ const MaterialDataTable = (props) => {
       endDate = moment(dateRange.endDate).format("YYYY-MM-DD");
     }
   }
+
+  
 
   return (
     <React.Fragment>
