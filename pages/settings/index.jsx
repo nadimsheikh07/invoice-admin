@@ -10,9 +10,6 @@ const Index = () => {
     const formTitle = t('settings:form_title')
     const submitTitle = t('common:save')    
     const acitionUrl = 'settings'
-    const redirectUrl = '/settings'
-    
-
     
     const form = [
         {
