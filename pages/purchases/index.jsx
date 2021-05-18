@@ -54,6 +54,7 @@ const Index = () => {
         selection={false}
         refresh={true}
         dateFilter={false}
+        viewData={checkPermission("sales.show")}
         addData={checkPermission("purchases.store")}
         editData={checkPermission("purchases.update")}
         deleteData={checkPermission("purchases.destroy")}

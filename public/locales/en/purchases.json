@@ -1,6 +1,7 @@
 {
     "title": "Purchases",
     "form_title": "Purchase Form",
+    "view_title": "Purchase View",
     "customer": "Customer",
     "company": "Company",
     "total_tax": "Total Tax",
