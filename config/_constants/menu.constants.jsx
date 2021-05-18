@@ -70,7 +70,7 @@ subitems = []
 if (checkPermission('categories.index')) {
     subitems.push({
         "id": "categories",
-        "icon": "settings",
+        "icon": "category",
         "name": "categories",
         "link": "/categories"
     })
@@ -78,7 +78,7 @@ if (checkPermission('categories.index')) {
 if (checkPermission('items.index')) {
     subitems.push({
         "id": "items",
-        "icon": "settings",
+        "icon": "donut_small",
         "name": "items",
         "link": "/items"
     })
@@ -90,7 +90,7 @@ if (subitems.length) {
         "items": [
             {
                 "id": "items",
-                "icon": "",
+                "icon": "list_alt",
                 "name": "items",
                 "subitems": subitems
             }
@@ -104,7 +104,7 @@ subitems = []
 if (checkPermission('companies.index')) {
     subitems.push({
         "id": "companies",
-        "icon": "settings",
+        "icon": "business",
         "name": "companies",
         "link": "/companies"
     })
@@ -112,7 +112,7 @@ if (checkPermission('companies.index')) {
 if (checkPermission('customers.index')) {
     subitems.push({
         "id": "customers",
-        "icon": "settings",
+        "icon": "people_alt",
         "name": "customers",
         "link": "/customers"
     })
@@ -121,7 +121,7 @@ if (checkPermission('customers.index')) {
 if (checkPermission('purchases.index')) {
     subitems.push({
         "id": "purchases",
-        "icon": "settings",
+        "icon": "description",
         "name": "purchases",
         "link": "/purchases"
     })
@@ -129,7 +129,7 @@ if (checkPermission('purchases.index')) {
 if (checkPermission('sales.index')) {
     subitems.push({
         "id": "sales",
-        "icon": "settings",
+        "icon": "receipt",
         "name": "sales",
         "link": "/sales"
     })
@@ -137,7 +137,7 @@ if (checkPermission('sales.index')) {
 if (checkPermission('inventories.index')) {
     subitems.push({
         "id": "inventories",
-        "icon": "settings",
+        "icon": "inventory",
         "name": "inventories",
         "link": "/inventories"
     })
@@ -150,7 +150,7 @@ if (subitems.length) {
         "items": [
             {
                 "id": "crm",
-                "icon": "",
+                "icon": "store",
                 "name": "crm",
                 "subitems": subitems
             }
