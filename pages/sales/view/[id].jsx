@@ -1,5 +1,4 @@
 import React from "react";
-import FormLayout from "../../../component/layout/formLayout";
 import AdminLayout from "../../../component/layout";
 import Detail from "../../../component/material-table/detail";
 import { useRouter } from "next/router";
