@@ -39,6 +39,7 @@ const MaterialDataTable = (props) => {
     exportExcel,
     isRowUpdate,
     customActions,
+    customFreeActions,
     autoRefresh,
   } = props;
   const classes = useStyles();
@@ -416,6 +417,49 @@ const MaterialDataTable = (props) => {
       });
     });
   }
+  if (customFreeActions) {
+    customFreeActions.forEach((element) => {
+      actions.push({
+        icon: element.icon,
+        iconProps: element.iconProps,
+        tooltip: element.tooltip,
+        isFreeAction: true,
+        onClick: async (event, rowData) => {
+          console.log("event", event);
+          loader({ open: true });
+          await apiConfig
+            .request({
+              method: element.method,
+              url: `/${element.url}`,
+              data: rowData,
+            })
+            .then((response) => {
+              if (response.status == 200) {
+                if (response.data.message) {
+                  snackbar({
+                    message: response.data.message,
+                    severity: "success",
+                  });
+                }
+                loader({ open: false });
+                refreshTable();
+              }
+            })
+            .catch((error) => {
+              const { response } = error;
+              loader({ open: false });
+              if (response.data.message) {
+                snackbar({
+                  message: response.data.message,
+                  severity: "error",
+                });
+              }
+              refreshTable();
+            });
+        },
+      });
+    });
+  }
 
   const customActionCall = async (id, data) => {
     loader({ open: true });
@@ -494,8 +538,6 @@ const MaterialDataTable = (props) => {
       endDate = moment(dateRange.endDate).format("YYYY-MM-DD");
     }
   }
-
-  
 
   return (
     <React.Fragment>

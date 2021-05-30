@@ -37,6 +37,15 @@ const Index = () => {
     field: "updated_at",
   });
 
+  let customFreeActions = [];
+
+  customFreeActions.push({
+    icon: 'sync',    
+    tooltip: t("common:update_inventory"),
+    url: 'inventories/update_inventory',    
+    methos: 'get',    
+  });
+
   return (
     <AdminLayout>
       <MaterialDataTable
@@ -46,6 +55,7 @@ const Index = () => {
         selection={false}
         refresh={true}
         dateFilter={false}
+        customFreeActions={customFreeActions}
         addData={checkPermission("inventories.store")}
         editData={checkPermission("inventories.update")}
         deleteData={checkPermission("inventories.destroy")}
