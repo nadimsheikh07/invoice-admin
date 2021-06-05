@@ -14,6 +14,18 @@ const Index = () => {
   const acitionUrl = "companies";
   const redirectUrl = "/companies";
 
+  const steps = [
+    {
+      label: t("companies:step1"),
+    },
+    {
+      label: t("companies:step2"),
+    },
+    {
+      label: t("companies:step3"),
+    },
+  ]
+
   const form = [
     {
       label: t("companies:name"),
@@ -23,6 +35,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 0
     },
     {
       label: t("companies:contact"),
@@ -32,6 +45,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 0
     },
     {
       label: t("companies:email"),
@@ -41,6 +55,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 0
     },
     {
       label: t("companies:pancard"),
@@ -50,6 +65,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "",
+      step: 1
     },
     {
       label: t("companies:gstin"),
@@ -59,6 +75,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "",
+      step: 1
     },
     {
       label: t("companies:address"),
@@ -68,6 +85,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 1
     },
     {
       label: t("companies:bank_name"),
@@ -77,6 +95,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 2
     },
     {
       label: t("companies:account_number"),
@@ -86,6 +105,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 2
     },
     {
       label: t("companies:account_type"),
@@ -95,6 +115,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 2
     },
     {
       label: t("companies:swift_code"),
@@ -104,6 +125,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "",
+      step: 2
     },
     {
       label: t("companies:ifsc_code"),
@@ -113,6 +135,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 2
     },
     {
       label: t("companies:bank_address"),
@@ -122,6 +145,7 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 2
     },
     {
       label: t("companies:sign_image"),
@@ -134,6 +158,7 @@ const Index = () => {
       icon: "upload",
       accept: "image/*",
       validation: "required",
+      step: 1
     },
     {
       label: t("companies:status"),
@@ -143,13 +168,15 @@ const Index = () => {
       fullWidth: true,
       icon: "",
       validation: "required",
+      step: 1
     },
   ];
 
   return (
     <AdminLayout>
-      <FormLayout title={formTitle} goBack={redirectUrl}>
+      <FormLayout md={12} lg={12} xl={12} title={formTitle} goBack={redirectUrl}>
         <Form
+          steps={steps}
           form={form}
           redirect={redirectUrl}
           actionUrl={acitionUrl}

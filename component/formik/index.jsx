@@ -17,7 +17,7 @@ import DividerSection from "./devider";
 import RenderDynamicField from "./renderDynamicField";
 import SelectBox from "./select";
 
-import { Button } from "@material-ui/core";
+import { Button, Step, StepContent, StepLabel, Stepper, Typography } from "@material-ui/core";
 import { useFormik } from "formik";
 import { apiConfig } from "../../config/api";
 import { useRouter } from "next/router";
@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
   cancel: {
     margin: theme.spacing(0, 2, 2),
   },
+  button: {
+    marginRight: theme.spacing(1),
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 const Index = (props) => {
@@ -42,6 +49,21 @@ const Index = (props) => {
   const snackbar = useSnackbar();
   const loader = useLoader();
   const classes = useStyles();
+
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
   const { form, id, actionUrl, submitTitle, redirect, callBack } = props;
 
   const simpleValidator = useRef(
@@ -191,326 +213,401 @@ const Index = (props) => {
     }
   }, [id]);
 
-  console.warn("formik", formik);
+  const RenderActions = () => {
+    if (props.steps && props.steps.length) {
+
+
+      if (activeStep == props.steps.length) {
+        return (
+          <div>
+            <Button onClick={handleReset}>Reset</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              {submitTitle}
+            </Button>
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            {activeStep !== 0 && <Button
+              disabled={activeStep === 0}
+              onClick={handleBack}
+            >
+              Back
+          </Button>}
+            <Button variant="contained" color="primary" onClick={handleNext}>
+              {activeStep === props.steps.length - 1 ? 'Finish' : 'Next'}
+            </Button>
+          </div>
+        )
+      }
+    } else {
+      return (
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          {submitTitle}
+        </Button>
+      )
+    }
+  }
+
+
+  const RenderSteps = () => {
+    if (props.steps) {
+      return (
+        <Stepper activeStep={activeStep} alternativeLabel orientation="horizontal">
+          {props.steps.map((step, index) => {
+            return (
+              <Step key={`formStep${index}`}>
+                <StepLabel>{step.label}</StepLabel>
+              </Step>
+            )
+          })}
+        </Stepper>
+      )
+    } else {
+      return ''
+    }
+  }
+
+
+  const RenderForm = ({ formData }) => {
+    // add where condition for form
+    let formWhere = [];
+    if (formData.where && formData.where.length) {
+      formData.where.forEach((where) => {
+        if (where.withField) {
+          formWhere.push({
+            name: where.name,
+            value: formik.values[where.name],
+          });
+        } else {
+          formWhere.push({
+            name: where.name,
+            value: where.value,
+          });
+        }
+      });
+    }
+
+    switch (formData.type) {
+      case "autocomplete":
+        return (
+          <Autocomplete
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            url={formData.url}
+            getOptionLabel={formData.getOptionLabel}
+            getOptionValue={formData.getOptionValue}
+            formWhere={formWhere}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "multicheckbox":
+        return (
+          <MultiCheckbox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            url={formData.url}
+            getOptionLabel={formData.getOptionLabel}
+            getOptionValue={formData.getOptionValue}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "multigroupcheckbox":
+        return (
+          <MultiGroupCheckbox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            url={formData.url}
+            getOptionLabel={formData.getOptionLabel}
+            getOptionValue={formData.getOptionValue}
+            getChildOptionLabel={formData.getChildOptionLabel}
+            getChildOptionValue={formData.getChildOptionValue}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+
+      case "password":
+        return (
+          <Passbox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={formik.handleChange}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "html":
+        return (
+          <HtmlEditor
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+
+      case "checkbox":
+        return (
+          <Checkbox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={formik.handleChange}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "selectbox":
+        return (
+          <SelectBox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            options={formData.options}
+            value={formik.values[formData.name]}
+            onChange={formik.handleChange}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "date":
+        return (
+          <DateBox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            disablePast={formData.disablePast}
+            minDate={formData.minDate}
+            variant={formData.variant}
+            format={formData.format}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "datetime":
+        return (
+          <DateTimeBox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            disablePast={formData.disablePast}
+            minDate={formData.minDate}
+            variant={formData.variant}
+            format={formData.format}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "time":
+        return (
+          <TimeBox
+            required={formData.required}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            variant={formData.variant}
+            format={formData.format}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "file":
+        return (
+          <FileBox
+            fullWidth={formData.fullWidth}
+            required={formData.required}
+            disabled={formData.disabled}
+            icon={formData.icon}
+            accept={formData.accept}
+            url={formData.url}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+      case "divider":
+        return <DividerSection label={formData.label} />;
+      case "dynamic":
+        return (
+          <RenderDynamicField
+            onChange={(e) => formik.setFieldValue(formData.name, e)}
+            name={formData.name}
+            label={formData.label}
+            value={formik.values[formData.name]}
+            form={formData.options}
+          />
+        );
+
+      default:
+        return (
+          <Textbox
+            required={formData.required}
+            multiline={formData.multiline}
+            disabled={formData.disabled}
+            fullWidth={formData.fullWidth}
+            name={formData.name}
+            label={formData.label}
+            type={formData.type}
+            icon={formData.icon}
+            value={formik.values[formData.name]}
+            onChange={formik.handleChange}
+            error={
+              formik.touched[formData.name] &&
+              Boolean(formik.errors[formData.name])
+            }
+            helperText={
+              formik.touched[formData.name] &&
+              formik.errors[formData.name]
+            }
+          />
+        );
+    }
+  }
 
   return (
     <form className={classes.form} noValidate onSubmit={formik.handleSubmit}>
+      <RenderSteps />
+
       {form &&
         form.map((formData) => {
-          // add where condition for form
-          let formWhere = [];
-          if (formData.where && formData.where.length) {
-            formData.where.forEach((where) => {
-              if (where.withField) {
-                formWhere.push({
-                  name: where.name,
-                  value: formik.values[where.name],
-                });
-              } else {
-                formWhere.push({
-                  name: where.name,
-                  value: where.value,
-                });
-              }
-            });
-          }
-
-          switch (formData.type) {
-            case "autocomplete":
+          if (props.steps && props.steps.length) {
+            if (formData.step === activeStep) {
               return (
-                <Autocomplete
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  url={formData.url}
-                  getOptionLabel={formData.getOptionLabel}
-                  getOptionValue={formData.getOptionValue}
-                  formWhere={formWhere}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "multicheckbox":
-              return (
-                <MultiCheckbox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  url={formData.url}
-                  getOptionLabel={formData.getOptionLabel}
-                  getOptionValue={formData.getOptionValue}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "multigroupcheckbox":
-              return (
-                <MultiGroupCheckbox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  url={formData.url}
-                  getOptionLabel={formData.getOptionLabel}
-                  getOptionValue={formData.getOptionValue}
-                  getChildOptionLabel={formData.getChildOptionLabel}
-                  getChildOptionValue={formData.getChildOptionValue}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-
-            case "password":
-              return (
-                <Passbox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "html":
-              return (
-                <HtmlEditor
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-
-            case "checkbox":
-              return (
-                <Checkbox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "selectbox":
-              return (
-                <SelectBox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  options={formData.options}
-                  value={formik.values[formData.name]}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "date":
-              return (
-                <DateBox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  disablePast={formData.disablePast}
-                  minDate={formData.minDate}
-                  variant={formData.variant}
-                  format={formData.format}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "datetime":
-              return (
-                <DateTimeBox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  disablePast={formData.disablePast}
-                  minDate={formData.minDate}
-                  variant={formData.variant}
-                  format={formData.format}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "time":
-              return (
-                <TimeBox
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  variant={formData.variant}
-                  format={formData.format}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "file":
-              return (
-                <FileBox
-                  fullWidth={formData.fullWidth}
-                  required={formData.required}
-                  disabled={formData.disabled}
-                  icon={formData.icon}
-                  accept={formData.accept}
-                  url={formData.url}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
-            case "divider":
-              return <DividerSection label={formData.label} />;
-            case "dynamic":
-              return (
-                <RenderDynamicField
-                  onChange={(e) => formik.setFieldValue(formData.name, e)}
-                  name={formData.name}
-                  label={formData.label}
-                  value={formik.values[formData.name]}
-                  form={formData.options}
-                />
-              );
-
-            default:
-              return (
-                <Textbox
-                  required={formData.required}
-                  multiline={formData.multiline}
-                  disabled={formData.disabled}
-                  fullWidth={formData.fullWidth}
-                  name={formData.name}
-                  label={formData.label}
-                  type={formData.type}
-                  icon={formData.icon}
-                  value={formik.values[formData.name]}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched[formData.name] &&
-                    Boolean(formik.errors[formData.name])
-                  }
-                  helperText={
-                    formik.touched[formData.name] &&
-                    formik.errors[formData.name]
-                  }
-                />
-              );
+                <RenderForm formData={formData} />
+              )
+            }
+          } else {
+            return (
+              <RenderForm formData={formData} />
+            )
           }
         })}
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        className={classes.submit}
-      >
-        {submitTitle}
-      </Button>
+
+      <RenderActions />
     </form>
   );
 };
