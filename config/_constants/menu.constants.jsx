@@ -20,14 +20,7 @@ menuData.push({
 
 // start user module
 subitems = []
-if (checkPermission('permissions.index')) {
-    subitems.push({
-        "id": "permissions",
-        "icon": "settings",
-        "name": "permissions",
-        "link": "/permissions"
-    })
-}
+
 if (checkPermission('roles.index')) {
     subitems.push({
         "id": "roles",
